@@ -24,38 +24,44 @@ library("inir")
 
 
 ```r
-file1 <- system.file("examples", "example1.ini", package = "inr")
+file1 <- system.file("examples", "example2.ini", package = "inir")
 ini_parse(file1)
-#> $example1.ini
-#> $example1.ini$mediabrowsergroup
-#> $example1.ini$mediabrowsergroup$title
-#> [1] "mediabrowsergroup"
-#> 
-#> $example1.ini$mediabrowsergroup$pairs
-#> $example1.ini$mediabrowsergroup$pairs[[1]]
-#> $example1.ini$mediabrowsergroup$pairs[[1]]$key
-#> [1] "navigationaction"
-#> 
-...
+#> $example2.ini
+#> <<ini config file>> example2.ini
+#>   sections (length): 
+#>     General: 1
+#>     Profile0: 3
 ```
 
 ## Parse > 1 file
 
 
 ```r
-file2 <- system.file("examples", "example2.ini", package = "inr")
+file2 <- system.file("examples", "example1.ini", package = "inir")
 ini_parse(c(file1, file2))
+#> $example2.ini
+#> <<ini config file>> example2.ini
+#>   sections (length): 
+#>     General: 1
+#>     Profile0: 3
+#> 
 #> $example1.ini
-#> $example1.ini$mediabrowsergroup
-#> $example1.ini$mediabrowsergroup$title
-#> [1] "mediabrowsergroup"
-#> 
-#> $example1.ini$mediabrowsergroup$pairs
-#> $example1.ini$mediabrowsergroup$pairs[[1]]
-#> $example1.ini$mediabrowsergroup$pairs[[1]]$key
-#> [1] "navigationaction"
-#> 
-...
+#> <<ini config file>> example1.ini
+#>   sections (length): 
+#>     mediabrowsergroup: 3
+#>     mediabrowsercontentsgroup: 5
+#>     contentgroup: 3
+#>     mtgetmediapopout: 1
+#>     mtgatherandplaypopout: 1
+#>     mtmydevicespopout: 1
+#>     mtsearchpopout: 1
+#>     nowplaying_popout: 1
+#>     lid_v_mediabrowser_contents: 4
+#>     videowindow: 3
+#>     contextwindow: 4
+#>     presentationwindow_norestore: 5
+#>     mediabrowser_popout: 1
+#>     mainapplicationwindow: 4
 ```
 
 ## Meta

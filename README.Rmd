@@ -52,15 +52,15 @@ library("inir")
 
 ## Parse a single file
 
-```{r output.lines = 1:10}
-file1 <- system.file("examples", "example1.ini", package = "inr")
+```{r}
+file1 <- system.file("examples", "example2.ini", package = "inir")
 ini_parse(file1)
 ```
 
 ## Parse > 1 file
 
-```{r output.lines = 1:10}
-file2 <- system.file("examples", "example2.ini", package = "inr")
+```{r}
+file2 <- system.file("examples", "example1.ini", package = "inir")
 ini_parse(c(file1, file2))
 ```
 
