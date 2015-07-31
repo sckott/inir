@@ -3,7 +3,7 @@ inir
 
 
 
-[![Build Status](https://api.travis-ci.org/sckott/rini.png?branch=master)](https://travis-ci.org/sckott/rini)
+[![Build Status](https://api.travis-ci.org/sckott/inir.png?branch=master)](https://travis-ci.org/sckott/inir)
 
 `inir` is a `.ini`/`.cfg` file parser
 
@@ -20,7 +20,7 @@ devtools::install_github("sckott/inir")
 library("inir")
 ```
 
-## Parse 1 file
+## Parse a single file
 
 
 ```r
