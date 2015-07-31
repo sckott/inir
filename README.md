@@ -7,6 +7,8 @@ inir
 
 `inir` is a `.ini`/`.cfg` file parser
 
+About `.ini`/`.cfg` files: [the INI file Wikipedia page](https://en.wikipedia.org/wiki/INI_file)
+
 ## Installation
 
 
