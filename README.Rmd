@@ -50,7 +50,7 @@ devtools::install_github("sckott/inir")
 library("inir")
 ```
 
-## Parse 1 file
+## Parse a single file
 
 ```{r output.lines = 1:10}
 file1 <- system.file("examples", "example1.ini", package = "inr")
