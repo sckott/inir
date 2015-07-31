@@ -32,10 +32,11 @@ check_file_ext <- function(x) {
 }
 
 files_parse <- function(x, y) {
-  setNames(lapply(x, file_parse), y)
+  out <- setNames(Map(file_parse, x, y), y)
+  lapply(out, structure, class = "ini")
 }
 
-file_parse <- function(z) {
+file_parse <- function(z, fname) {
   txt <- readLines(z)
   starts <- grep("\\[", txt)
 
@@ -61,5 +62,16 @@ file_parse <- function(z) {
     list(title = title, pairs = pairs)
   })
 
-  setNames(res, vapply(res, "[[", "", "title"))
+  hh <- setNames(res, vapply(res, "[[", "", "title"))
+  attr(hh, "file_name") <- fname
+  hh
+}
+
+#' @export
+print.ini <- function(x, ...) {
+  cat(paste0("<<ini config file>> ", attr(x, "file_name")), sep = "\n")
+  cat("  sections (length): ", sep = "\n")
+  for (i in seq_along(x)) {
+    cat(sprintf("    %s: %s", names(x[i]), length(x[[i]]$pairs)), sep = "\n")
+  }
 }
