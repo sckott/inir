@@ -1,7 +1,7 @@
 context("ini_parse")
 
 test_that("ini_parse parses correctly", {
-  file1 <- system.file("examples", "example1.ini", package = "inr")
+  file1 <- system.file("examples", "example1.ini", package = "inir")
   res <- ini_parse(file1)
 
   expect_is(res, "list")
@@ -11,7 +11,7 @@ test_that("ini_parse parses correctly", {
   expect_is(res$example1.ini[[1]]$pairs[[1]], "list")
   expect_named(res$example1.ini[[1]]$pairs[[1]], c('key', 'value'))
 
-  file2 <- system.file("examples", "example2.ini", package = "inr")
+  file2 <- system.file("examples", "example2.ini", package = "inir")
   res2 <- ini_parse(c(file1, file2))
 
   expect_is(res2, "list")

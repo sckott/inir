@@ -14,10 +14,10 @@ Parse a .ini or a .cfg file
 }
 \examples{
 \dontrun{
-file1 <- system.file("examples", "example1.ini", package="inr")
+file1 <- system.file("examples", "example1.ini", package="inir")
 ini_parse(file1)
 
-file2 <- system.file("examples", "example2.ini", package="inr")
+file2 <- system.file("examples", "example2.ini", package="inir")
 ini_parse(c(file1, file2))
 }
 }
