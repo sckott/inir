@@ -1,3 +1,3 @@
 library("testthat")
 
-test_check("inr")
+test_check("inir")
