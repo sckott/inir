@@ -1,5 +1,5 @@
 Package: inir
-Title: Parser for '.ini' files
+Title: Parser for '.ini' Files
 Description: Parser for '.ini' files.
 Version: 0.0.1.9000
 License: MIT + file LICENSE
