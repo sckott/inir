@@ -1,12 +1,12 @@
-Package: inr
+Package: inir
 Title: Parser for '.ini' files
 Description: Parser for '.ini' files.
 Version: 0.0.1.9000
 License: MIT + file LICENSE
 Authors@R: person("Chamberlain", "Scott", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
-URL: https://github.com/sckott/inr
-BugReports: https://github.com/sckott/inr/issues
+URL: https://github.com/sckott/inir
+BugReports: https://github.com/sckott/inir/issues
 Suggests:
     testthat,
     knitr
