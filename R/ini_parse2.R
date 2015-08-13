@@ -2,13 +2,13 @@
 #'
 #' @export
 #' @import R6
-#' @param x File paths, one or more
+#' @param path A single file path
 #' @examples \dontrun{
 #' # example file
 #' gitfile <- system.file("examples", "gitconfig.ini", package = "inir")
 #'
 #' # instantiate new object with file path
-#' (res <- Ini$new(file = gitfile))
+#' (res <- ini(gitfile))
 #'
 #' # get file path
 #' res$file
@@ -35,6 +35,10 @@
 #' # write file
 #' res$write(path = "myfile2.ini")
 #' }
+ini <- function(path) {
+  Ini$new(file = path)
+}
+
 Ini <- R6::R6Class("Ini",
    portable = FALSE,
    public = list(

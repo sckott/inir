@@ -63,7 +63,7 @@ gitfile <- system.file("examples", "gitconfig.ini", package = "inir")
 instantiate new object with file path
 
 ```{r}
-(res <- Ini$new(file = gitfile))
+(res <- ini(gitfile))
 ```
 
 get file path

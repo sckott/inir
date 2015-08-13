@@ -7,9 +7,8 @@ test_that("ini_parse parses correctly", {
   expect_is(res, "list")
   expect_named(res, "example1.ini")
   expect_is(res$example1.ini[[1]], "list")
-  expect_is(res$example1.ini[[1]]$pairs, "list")
-  expect_is(res$example1.ini[[1]]$pairs[[1]], "list")
-  expect_named(res$example1.ini[[1]]$pairs[[1]], c('key', 'value'))
+  expect_is(res$example1.ini[[1]], "list")
+  expect_is(res$example1.ini[[1]]$navigationaction, "character")
 
   file2 <- system.file("examples", "example2.ini", package = "inir")
   res2 <- ini_parse(c(file1, file2))
@@ -17,11 +16,9 @@ test_that("ini_parse parses correctly", {
   expect_is(res2, "list")
   expect_named(res2, c("example1.ini", "example2.ini"))
   expect_is(res2$example1.ini[[1]], "list")
-  expect_is(res2$example1.ini[[1]]$pairs, "list")
-  expect_is(res2$example1.ini[[1]]$pairs[[1]], "list")
-  expect_named(res2$example1.ini[[1]]$pairs[[1]], c('key', 'value'))
-  expect_equal(res2$example2.ini[[1]]$title, "General")
-  expect_named(res2$example2.ini[[1]]$pairs[[1]], c('key', 'value'))
+  expect_is(res2$example1.ini[[1]]$navigationaction, "character")
+  expect_is(res2$example1.ini[[1]]$validsection, "character")
+  expect_true(as.logical(res2$example1.ini[[1]]$validsection))
 })
 
 test_that("ini_parse fails well", {

@@ -35,7 +35,7 @@ instantiate new object with file path
 
 
 ```r
-(res <- Ini$new(file = gitfile))
+(res <- ini(gitfile))
 #> <<ini config file>> gitconfig.ini.
 ```
 
