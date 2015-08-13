@@ -4,6 +4,7 @@ inir
 
 
 [![Build Status](https://api.travis-ci.org/sckott/inir.png?branch=master)](https://travis-ci.org/sckott/inir)
+[![codecov.io](http://codecov.io/github/sckott/inir/coverage.svg?branch=master)](http://codecov.io/github/sckott/inir?branch=master)
 
 `inir` is a `.ini`/`.cfg` file parser
 
