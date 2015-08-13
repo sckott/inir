@@ -52,18 +52,42 @@ devtools::install_github("sckott/inir")
 library("inir")
 ```
 
-## Parse a single file
+## Parse a file
+
+Get a file
 
 ```{r}
-file1 <- system.file("examples", "example2.ini", package = "inir")
-ini_parse(file1)
+gitfile <- system.file("examples", "gitconfig.ini", package = "inir")
 ```
 
-## Parse > 1 file
+instantiate new object with file path
 
 ```{r}
-file2 <- system.file("examples", "example1.ini", package = "inir")
-ini_parse(c(file1, file2))
+(res <- Ini$new(file = gitfile))
+```
+
+get file path
+
+```{r}
+res$file
+```
+
+read file
+
+```{r}
+res$read()
+```
+
+get section names
+
+```{r}
+res$sections()
+```
+
+get contents of a single section
+
+```{r}
+res$get("core")
 ```
 
 ## Meta

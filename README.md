@@ -22,48 +22,76 @@ devtools::install_github("sckott/inir")
 library("inir")
 ```
 
-## Parse a single file
+## Parse a file
+
+Get a file
 
 
 ```r
-file1 <- system.file("examples", "example2.ini", package = "inir")
-ini_parse(file1)
-#> $example2.ini
-#> <<ini config file>> example2.ini
-#>   sections (length): 
-#>     General: 1
-#>     Profile0: 3
+gitfile <- system.file("examples", "gitconfig.ini", package = "inir")
 ```
 
-## Parse > 1 file
+instantiate new object with file path
 
 
 ```r
-file2 <- system.file("examples", "example1.ini", package = "inir")
-ini_parse(c(file1, file2))
-#> $example2.ini
-#> <<ini config file>> example2.ini
+(res <- Ini$new(file = gitfile))
+#> <<ini config file>> gitconfig.ini.
+```
+
+get file path
+
+
+```r
+res$file
+#> [1] "/Library/Frameworks/R.framework/Versions/3.2/Resources/library/inir/examples/gitconfig.ini"
+```
+
+read file
+
+
+```r
+res$read()
+#> $gitconfig.ini
+#> <<ini config file>> gitconfig.ini
 #>   sections (length): 
-#>     General: 1
-#>     Profile0: 3
+#>     core: 6
+#>     remote "origin": 2
+#>     branch "master": 2
+#>     travis: 1
+```
+
+get section names
+
+
+```r
+res$sections()
+#> [1] "core"              "remote \"origin\"" "branch \"master\""
+#> [4] "travis"
+```
+
+get contents of a single section
+
+
+```r
+res$get("core")
+#> $repositoryformatversion
+#> [1] "0"
 #> 
-#> $example1.ini
-#> <<ini config file>> example1.ini
-#>   sections (length): 
-#>     mediabrowsergroup: 3
-#>     mediabrowsercontentsgroup: 5
-#>     contentgroup: 3
-#>     mtgetmediapopout: 1
-#>     mtgatherandplaypopout: 1
-#>     mtmydevicespopout: 1
-#>     mtsearchpopout: 1
-#>     nowplaying_popout: 1
-#>     lid_v_mediabrowser_contents: 4
-#>     videowindow: 3
-#>     contextwindow: 4
-#>     presentationwindow_norestore: 5
-#>     mediabrowser_popout: 1
-#>     mainapplicationwindow: 4
+#> $filemode
+#> [1] "true"
+#> 
+#> $bare
+#> [1] "false"
+#> 
+#> $logallrefupdates
+#> [1] "true"
+#> 
+#> $ignorecase
+#> [1] "true"
+#> 
+#> $precomposeunicode
+#> [1] "true"
 ```
 
 ## Meta

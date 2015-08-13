@@ -8,6 +8,21 @@
 #'
 #' file2 <- system.file("examples", "example2.ini", package="inir")
 #' ini_parse(c(file1, file2))
+#'
+#' # index to any value by key name
+#' ## use either dollar sign or bracket indexing
+#' gitfile <- system.file("examples", "gitconfig.ini", package="inir")
+#' (res <- ini_parse(gitfile))
+#' res$gitconfig.ini
+#' res$gitconfig.ini$core
+#' res$gitconfig.ini['core']
+#' res$gitconfig.ini$core$repositoryformatversion
+#' res$gitconfig.ini$core$filemode
+#' res$gitconfig.ini$`remote "origin"`
+#' res$gitconfig.ini[['remote "origin"']][['url']]
+#' res$gitconfig.ini$`remote "origin"`$url
+#' res$gitconfig.ini['branch "master"']
+#' res$gitconfig.ini$travis$slug
 #' }
 ini_parse <- function(x) {
   file_exists(x)
@@ -50,21 +65,26 @@ file_parse <- function(z, fname) {
     sets[[i]] <- txt[starts[i]:end]
   }
 
-  res <- lapply(sets, function(z) {
+  res <- sapply(sets, function(z) {
     title <- gsub("\\[|\\]", "", z[[1]])
     pairs <- z[-1]
     # remove empty pairs
     pairs <- Filter(function(x) nchar(x) > 0, pairs)
     # parse pairs to key-values
-    pairs <- lapply(pairs, function(w) {
-      as.list(setNames(strsplit(w, "=|:")[[1]], c('key', 'value')))
-    })
-    list(title = title, pairs = pairs)
+#     pairs <- lapply(pairs, function(w) {
+#       as.list(setNames(strsplit(w, "=|:")[[1]], c('key', 'value')))
+#     })
+    pairs <- sapply(pairs, function(w) {
+      tmp <- strsplit(w, "=|:")[[1]]
+      tmp <- strtrim(tmp)
+      as.list(setNames(tmp[2], tmp[1]))
+    }, USE.NAMES = FALSE)
+    setNames(list(pairs), title)
   })
 
-  hh <- setNames(res, vapply(res, "[[", "", "title"))
-  attr(hh, "file_name") <- fname
-  hh
+  # hh <- setNames(res, vapply(res, "[[", "", "title"))
+  attr(res, "file_name") <- fname
+  res
 }
 
 #' @export
@@ -72,6 +92,6 @@ print.ini <- function(x, ...) {
   cat(paste0("<<ini config file>> ", attr(x, "file_name")), sep = "\n")
   cat("  sections (length): ", sep = "\n")
   for (i in seq_along(x)) {
-    cat(sprintf("    %s: %s", names(x[i]), length(x[[i]]$pairs)), sep = "\n")
+    cat(sprintf("    %s: %s", names(x[i]), length(x[[i]])), sep = "\n")
   }
 }
