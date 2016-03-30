@@ -1,7 +1,7 @@
 Package: inir
 Title: Parser for '.ini' Files
 Description: Parser for '.ini' files.
-Version: 0.0.3.9000
+Version: 0.0.3.9001
 License: MIT + file LICENSE
 Authors@R: person("Chamberlain", "Scott", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
@@ -11,4 +11,5 @@ Imports:
     R6
 Suggests:
     testthat,
-    knitr
+    knitr,
+    covr
