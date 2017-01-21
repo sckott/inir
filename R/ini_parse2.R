@@ -1,8 +1,29 @@
 #' Parse a .ini or a .cfg file
 #'
 #' @export
-#' @import R6
-#' @param path A single file path
+#' @param path (character) A single file path to read from on initialize, or
+#' to write to on \code{write}
+#' @details
+#' \strong{Methods}
+#'   \describe{
+#'     \item{\code{read()}}{
+#'       Read a file
+#'     }
+#'     \item{\code{write(path)}}{
+#'       Write a file
+#'       - path: path to write the file to
+#'     }
+#'     \item{\code{get(x, fallback)}}{
+#'       Get a section
+#'       - x: section name to get
+#'       - fallback: (character) fallback value if 'x' not found
+#'     }
+#'     \item{\code{sections()}}{
+#'       Get all sections of a file
+#'     }
+#'   }
+#' @usage NULL
+#' @format NULL
 #' @examples \dontrun{
 #' # example file
 #' gitfile <- system.file("examples", "gitconfig.ini", package = "inir")
@@ -45,19 +66,24 @@ Ini <- R6::R6Class("Ini",
    public = list(
      file = NA,
      parsed = NA,
+
      initialize = function(file) {
        self$file <- file
      },
+
+     print = function() {
+       cat(paste0("<<ini config file>> ", basename(self$file), ".\n"))
+     },
+
      read = function() {
        self$parsed <- ini_parse(self$file)
        self$parsed
      },
-     print = function() {
-       cat(paste0("<<ini config file>> ", basename(self$file), ".\n"))
-     },
+
      sections = function() {
        names(self$parsed[[1]])
      },
+
      get = function(x, fallback) {
        tmp <- self$parsed[[1]][[x]]
        if (is.null(tmp)) {
@@ -66,6 +92,7 @@ Ini <- R6::R6Class("Ini",
          tmp
        }
      },
+
      write = function(path) {
        ini_write(self$parsed[[1]], path)
      }

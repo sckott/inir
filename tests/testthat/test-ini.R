@@ -9,7 +9,7 @@ test_that("ini works", {
   expect_is(res$file, "character")
   expect_match(res$file, "example1.ini")
   expect_named(res, c('.__enclos_env__', 'parsed', 'file', 'clone',
-                      'write', 'get', 'sections', 'print', 'read',
+                      'write', 'get', 'sections', 'read', 'print',
                       'initialize', 'self'))
   expect_true(is.na(res$parsed))
 

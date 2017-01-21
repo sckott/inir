@@ -3,14 +3,32 @@
 \name{ini}
 \alias{ini}
 \title{Parse a .ini or a .cfg file}
-\usage{
-ini(path)
-}
 \arguments{
-\item{path}{A single file path}
+\item{path}{(character) A single file path to read from on initialize, or
+to write to on \code{write}}
 }
 \description{
 Parse a .ini or a .cfg file
+}
+\details{
+\strong{Methods}
+  \describe{
+    \item{\code{read()}}{
+      Read a file
+    }
+    \item{\code{write(path)}}{
+      Write a file
+      - path: path to write the file to
+    }
+    \item{\code{get(x, fallback)}}{
+      Get a section
+      - x: section name to get
+      - fallback: (character) fallback value if 'x' not found
+    }
+    \item{\code{sections()}}{
+      Get all sections of a file
+    }
+  }
 }
 \examples{
 \dontrun{

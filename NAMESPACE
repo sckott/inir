@@ -2,4 +2,3 @@
 
 S3method(print,ini)
 export(ini)
-import(R6)
