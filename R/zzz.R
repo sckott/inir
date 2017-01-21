@@ -29,7 +29,7 @@ check_file_ext <- function(x) {
 }
 
 files_parse <- function(x, y) {
-  out <- setNames(Map(file_parse, x, y), y)
+  out <- stats::setNames(Map(file_parse, x, y), y)
   lapply(out, structure, class = "ini")
 }
 
@@ -54,7 +54,7 @@ file_parse <- function(z, fname) {
     pairs <- Filter(function(x) nchar(x) > 0, pairs)
     # parse pairs to key-values
     #     pairs <- lapply(pairs, function(w) {
-    #       as.list(setNames(strsplit(w, "=|:")[[1]], c('key', 'value')))
+    #       as.list(stats::setNames(strsplit(w, "=|:")[[1]], c('key', 'value')))
     #     })
     pairs <- sapply(pairs, function(w) {
       ## FIXME - need to split just on first occurrence of = or :
@@ -63,12 +63,12 @@ file_parse <- function(z, fname) {
       if (length(tmp) > 1) {
         tmp[2] <- paste0(tmp[-1], collapse = ":")
       }
-      as.list(setNames(tmp[2], tmp[1]))
+      as.list(stats::setNames(tmp[2], tmp[1]))
     }, USE.NAMES = FALSE)
-    setNames(list(pairs), title)
+    stats::setNames(list(pairs), title)
   })
 
-  # hh <- setNames(res, vapply(res, "[[", "", "title"))
+  # hh <- stats::setNames(res, vapply(res, "[[", "", "title"))
   attr(res, "file_name") <- fname
   res
 }
