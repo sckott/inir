@@ -45,7 +45,7 @@ get file path
 
 ```r
 res$file
-#> [1] "/Library/Frameworks/R.framework/Versions/3.2/Resources/library/inir/examples/gitconfig.ini"
+#> [1] "/Library/Frameworks/R.framework/Versions/3.3/Resources/library/inir/examples/gitconfig.ini"
 ```
 
 read file
@@ -99,3 +99,4 @@ res$get("core")
 
 * License: MIT
 * Get citation information for `inir` in R doing `citation(package = 'inir')`
+* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

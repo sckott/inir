@@ -95,3 +95,4 @@ res$get("core")
 
 * License: MIT
 * Get citation information for `inir` in R doing `citation(package = 'inir')`
+* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

@@ -34,6 +34,7 @@
 #'
 #' # write file
 #' res$write(path = "myfile2.ini")
+#' unlink("myfile2.ini")
 #' }
 ini <- function(path) {
   Ini$new(file = path)

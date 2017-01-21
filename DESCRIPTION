@@ -1,7 +1,10 @@
 Package: inir
-Title: Parser for '.ini' Files
-Description: Parser for '.ini' files.
-Version: 0.0.3.9001
+Title: Parser for .ini/.cfg Files
+Description: Parser for .ini/.cfg files. These types of files are for
+    configuration for software programs and follow a YAML like syntax, 
+    but are not quite that, so require separate parsing. 
+    (<https://en.wikipedia.org/wiki/INI_file>).
+Version: 0.0.6.9100
 License: MIT + file LICENSE
 Authors@R: person("Chamberlain", "Scott", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
@@ -13,3 +16,4 @@ Suggests:
     testthat,
     knitr,
     covr
+RoxygenNote: 5.0.1
