@@ -1,4 +1,6 @@
-#' @title Parse ini and cfg files
+#' Parse ini and cfg files
+#'
+#' Simple parser for ini and cfg configuration files.
 #'
 #' @name inir-package
 #' @aliases inir

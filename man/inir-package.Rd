@@ -5,6 +5,9 @@
 \alias{inir}
 \alias{inir-package}
 \title{Parse ini and cfg files}
+\description{
+Simple parser for ini and cfg configuration files.
+}
 \author{
 Scott Chamberlain <myrmecocystus@gmail.com>
 }
